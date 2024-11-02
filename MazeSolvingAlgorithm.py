@@ -1,7 +1,5 @@
 from queue import PriorityQueue
 
-directions = [(0, 1), (0, -1), (1, 0), (-1, 0)] 
-
 def h(cell1,cell2):
     x1,y1 = cell1
     x2,y2 = cell2
@@ -52,6 +50,4 @@ def aStar(maze_map, width, height, source, destination):
         fwdPath.append(cell)
         cell = aPath[cell]
     fwdPath.append(source)
-    searchPath.pop(0)
-    searchPath.pop(-1)
     return searchPath, fwdPath

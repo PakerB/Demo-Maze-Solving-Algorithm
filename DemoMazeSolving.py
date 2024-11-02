@@ -78,10 +78,11 @@ def breakWall(x1, y1, x2, y2):
 
 
 def create_maze():
-    global length 
-    length = int(min((scr_width-310) / (width+5), (scr_height-50) / (height+5)))
-
+    
     global maze_map
+    global grid
+    grid = []
+    maze_map = {}
     for x in range(width):
         for y in range(height):
             grid.append((x,y))
@@ -164,7 +165,7 @@ def Sol():
 
     tracePath(searchPath, 0, "DeepSkyBlue2", lambda: tracePath(fwdPath, -1, "yellow2"))
     a_star_path_len.set(f"A Star Path Length : {len(fwdPath)+1}")
-    a_star_search_len.set(f"A Star Search Length : {len(searchPath) + 2}")
+    a_star_search_len.set(f"A Star Search Length : {len(searchPath)}")
     
 
 def checkSizeOfMaze():
@@ -190,6 +191,9 @@ def checkSizeOfMaze():
                 speed = 50
             else:
                 speed = 20
+            
+            global length 
+            length = int(min((scr_width-310) / (width+5), (scr_height-50) / (height+5)))
             create_maze()
         else:
             messagebox.showerror("Error", "Please enter valid values within the specified limits.")
